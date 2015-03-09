@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="javascripts/paper-full.js"></script>
+  </head>
+  <body>
+    <script type="text/paperscript" canvas="drawing">
+      <!-- var rect = new Path.Rectangle({ -->
+        <!-- fillColor: "#ef1020" -->
+        <!-- point: [20, 20], -->
+        <!-- size: [60, 100], -->
+        <!-- strokeColor: "black" -->
+      <!-- }); -->
+
+      var circle = new Path.Circle({
+        center: [400, 50],
+        radius: 20,
+        strokeColor: "#10aa10",
+        strokeWidth: 4
+      });
+
+      var path = new Path({
+        segments: [
+        [10, 10], [100, 100], [300, 200], [20, 300], [10, 10]
+        ],
+        strokeColor: "black"
+      });
+      path.smooth();
+
+      path.translate(new Point(450, 200));
+
+      function onFrame(event) {
+        path.rotate(3)
+        path.fillColor = "rgb(" + event.count % 256 + ", 0, 0)";
+      }
+
+    </script>
+
+    <canvas id="drawing" style="width: 900px; height: 900px;">
+    </canvas>
+  </body>
+</html>
